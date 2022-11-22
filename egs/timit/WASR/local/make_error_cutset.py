@@ -59,6 +59,10 @@ def make_error(
     text = cut.supervisions[0].text
     text_list = text.split()
     new_text_list = []
+
+    orig_verbose_list = []
+    modified_verbose_list = []
+
     for token in text_list:
         new_token = token
         prob = random.random()
@@ -69,16 +73,24 @@ def make_error(
                 or new_token.startswith("#")
             ):
                 new_token = random.choice(token_list)
+            verbose_token = token.upper() 
+            modified_verbose_token = new_token.upper()
+        else:
+            verbose_token = token
+            modified_verbose_token = token
+
+        orig_verbose_list.append(verbose_token)
+        modified_verbose_list.append(modified_verbose_token)
         new_text_list.append(new_token)
 
     new_text = " ".join(new_text_list)
     cut.supervisions[0].text = new_text
 
-    return cut, text_list, new_text_list
+    return cut, orig_verbose_list, modified_verbose_list
 
 
 def main():
-    non_tokens = set(("sil", "<UNK>", "<eps>"))
+    non_tokens = set(("sil", "<UNK>", "<eps>", "<star>"))
     parser = get_parser()
     args = parser.parse_args()
     verbose_output = Path(args.verbose_output)
