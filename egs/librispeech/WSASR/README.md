@@ -77,4 +77,7 @@ synthetic_train_cutset="${feature_dir}/librispeech_cuts_train-clean-100_sub_${su
   --del-error-rate "${del_er}" \
   --output-cutset "${synthetic_train_cutset}"
 ```
-This script generates synthetic substitution, insertion, and deletion errors in the transcript with ratios 'sub_er', 'ins_er', and 'del_er', respectively. The original transcript is saved as 'verbatim transcript' in the cutset, along with information on how the transcript is corrupted.
+This script generates synthetic substitution, insertion, and deletion errors in the transcript with ratios 'sub_er', 'ins_er', and 'del_er', respectively. The original transcript is saved as 'verbatim transcript' in the cutset, along with information on how the transcript is corrupted:
+  - ['hello'] indicates the original word is substituted by 'hello'
+  - [] indicates an extra word is inserted into the transcript
+  - -hello- indicates the word 'hello' is deleted from the transcript
