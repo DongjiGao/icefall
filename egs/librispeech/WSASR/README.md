@@ -104,7 +104,7 @@ self_loop_weight_decay=0.999
 show_alignment=true
 
 export CUDA_VISIBLE_DEVICES="0,1,2,3"
-python conformer_ctc2/train.py \
+./conformer_ctc2/train.py \
   --world-size 4 \
   --manifest-dir "${manifest–dir}" \
   --train-manifest "${train_manifest}" \
@@ -120,3 +120,12 @@ python conformer_ctc2/train.py \
   --show-alignment "${show_alingment}"
 ```
 The bypass arc deals with substitution and insertion errors, while the self-loop arc deals with deletion errors. Using "--show-alignment" would print the best alignment during training, which is very helpful for tuning hyperparameters and debugging.
+
+### Decoding
+```
+export CUDA_VISIBLE_DEVICES="0"
+python conformer_ctc2/decode.py \
+  --exp-dir "${exp_dir}" \
+  --lang-dir "${lang_dir}" \
+  --lm-dir "${lm_dir}" 
+```
