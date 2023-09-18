@@ -49,9 +49,19 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 ## Description of the recipe
 ### Preparation
 ```
+feature_dir="data/ssl"
+lang_dir="data/lang"
+lm_dir="data/lm"
+
 otc_token="<star>"
 ./prepare.sh --otc-token "${otc_token}"
 ```
 This script adds the 'otc_token' ('\<star\>') and its corresponding sentence-piece ('▁\<star\>') to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use GPU to accelerate feature extraction).
 
 ### Make synthetic errors to the transcript [optional]
+```
+sub_er=0.17
+ins_er=0.17
+del_er=0.17
+
+```
