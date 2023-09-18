@@ -6,7 +6,8 @@ the task and the BTC/OTC training process.
 
 Note that OTC is an extension of BTC and supports all BTC functions. Therefore, in the following, we only describe OTC.
 ## Task
-We propose BTC/OTC to directly train an ASR system leveraging weak supervision, i.e., speech with non-verbatim transcripts.
+We propose BTC/OTC to directly train an ASR system leveraging weak supervision, i.e., speech with non-verbatim transcripts. This is achieved by using a special token $\star$ to model uncertainties (i.e., substitution errors, insertion errors, and deletion errors) 
+within the WFST framework during training.\
 
 
 <div style="display: flex;flex; justify-content: space-between">
@@ -25,8 +26,7 @@ We propose BTC/OTC to directly train an ASR system leveraging weak supervision, 
 </div>
 <figcaption> Examples of errors (substitution, insertion, and deletion) in the transcript. The grey box is the verbatim transcript and the red box is the inaccurate transcript. Inaccurate words are marked in bold.</figcaption> <br><br>
 
-This is achieved by using a special token $\star$ to model uncertainties (i.e., substitution errors, insertion errors, and deletion errors) 
-within the WFST framework during training.\
+
 we modify $G(\mathbf{y})$ by adding self-loop arcs into each state and bypass arcs into each arc. 
   <p align="center">
     <img src="figures/otc_g.png" alt="Image Alt Text" width="50%" />
