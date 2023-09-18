@@ -67,5 +67,14 @@ This script adds the 'otc_token' ('\<star\>') and its corresponding sentence-pie
 sub_er=0.17
 ins_er=0.17
 del_er=0.17
+synthetic_train_cutset="${feature_dir}/librispeech_cuts_train-clean-100_sub_${sub_er}_${ins_er}_${del_er}.jsonl.gz"
 
+./local/make_error_cutset.py \
+  --input-cutset "${feature_dir}/librispeech_cuts_train-clean-100.jsonl.gz" \
+  --words-file "${lang_dir}/words.txt" \
+  --sub-error-rate "${sub_er}" \
+  --ins-error-rate "${ins_er}" \
+  --del-error-rate "${del_er}" \
+  --output-cutset "${synthetic_train_cutset}"
 ```
+This script generates synthetic substitution, insertion, and deletion errors in the transcript with ratios 'sub_er', 'ins_er', and 'del_er', respectively. The original transcript is saved as 'verbatim transcript' in the cutset, along with information on how the transcript is corrupted.
