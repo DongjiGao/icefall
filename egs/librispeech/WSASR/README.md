@@ -47,3 +47,4 @@ The $\star$ is represented as the average probability of all non-blank tokens.
 The weight of $\star$ is the log average probability of "a" and "b": $\log \frac{e^{-1.2} + e^{-2.3}}{2} = -1.6$ and $\log \frac{e^{-1.9} + e^{-0.5}}{2} = -1.0$ for 2 frames.
 
 ## Description of the recipe
+### Preparation
