@@ -4,7 +4,7 @@ This is a weakly supervised ASR recipe for the LibriSpeech (clean 100 hours) dat
 conformer model using Bypass Temporal Classification (BTC)/Omni-temporal Classification (OTC) with transcripts with synthetic errors. In this README, we will describe
 the task and the BTC/OTC training process.
 
-Note that OTC is an extension of BTC and supports all BTC functions. Therefore, in the following, we will exclusively describe OTC.
+Note that OTC is an extension of BTC and supports all BTC functions. Therefore, in the following, we only describe OTC.
 ## Task
 We propose BTC/OTC to directly train an ASR system leveraging weak supervision, i.e., speech with non-verbatim transcripts.
 
