@@ -50,8 +50,10 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 ### Preparation
 ```
 feature_dir="data/ssl"
+manifest_dir="${feature_dir}"
 lang_dir="data/lang"
 lm_dir="data/lm"
+exp_dir="conformer_ctc2/exp"
 otc_token="<star>"
 
 ./prepare.sh \
@@ -62,12 +64,12 @@ otc_token="<star>"
 ```
 This script adds the 'otc_token' ('\<star\>') and its corresponding sentence-piece ('▁\<star\>') to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use GPU to accelerate feature extraction).
 
-### Make synthetic errors to the transcript [optional]
+### Making synthetic errors to the transcript [optional]
 ```
 sub_er=0.17
 ins_er=0.17
 del_er=0.17
-synthetic_train_cutset="${feature_dir}/librispeech_cuts_train-clean-100_sub_${sub_er}_${ins_er}_${del_er}.jsonl.gz"
+synthetic_train_mainfest="librispeech_cuts_train-clean-100_${sub_er}_${ins_er}_${del_er}.jsonl.gz"
 
 ./local/make_error_cutset.py \
   --input-cutset "${feature_dir}/librispeech_cuts_train-clean-100.jsonl.gz" \
@@ -75,7 +77,7 @@ synthetic_train_cutset="${feature_dir}/librispeech_cuts_train-clean-100_sub_${su
   --sub-error-rate "${sub_er}" \
   --ins-error-rate "${ins_er}" \
   --del-error-rate "${del_er}" \
-  --output-cutset "${synthetic_train_cutset}"
+  --output-cutset "${feature_dir}/${synthetic_train_manifest}"
 ```
 This script generates synthetic substitution, insertion, and deletion errors in the transcript with ratios 'sub_er', 'ins_er', and 'del_er', respectively. The original transcript is saved as 'verbatim transcript' in the cutset, along with information on how the transcript is corrupted:
   - '[hello]' indicates the original word is substituted by 'hello'
@@ -85,5 +87,35 @@ So if the original transcript is "have a nice day" and the synthetic one is "a v
 ```
 original:  have  a      nice  day
 synthetic:       a very good  day
-          -have- a  [] [good] day
+verbatim: -have- a  [] [good] day
+```
+
+### Training
+```
+allow_bypass_arc=true
+allow_self_loop_arc=true
+
+initial_bypass_weight=-19
+initial_self_loop_weight=3.75
+
+bypass_weight_decay=0.975
+self_loop_weight_decay=0.999
+
+show_alignment=true
+
+export CUDA_VISIBLE_DEVICES="0,1,2,3"
+python conformer_ctc2/train.py \
+  --world-size 4 \
+  --manifest-dir "${manifest–dir}" \
+  --train-manifest "${train_manifest}" \
+  --exp-dir "${exp_dir}" \
+  --lang-dir "${lang_dir}" \
+  --otc-token "${otc_token}" \
+  --allow-bypass-arc "${allow_bypass_arc}" \
+  --allow-self-loop-arc "${allow_self_loop_arc}" \
+  --initial-bypass-weight "${initial_bypass_weight}" \
+  --initial-self-loop-weight "${initial_self_loop_weight}" \
+  --bypass-weight-decay "${bypass_weight_decay}" \
+  --self-loop-weight-decay "${self_loop_weight_decay}" \
+  --show-alignment "${show_alingment}"
 ```
