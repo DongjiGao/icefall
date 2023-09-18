@@ -52,4 +52,4 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 otc_token="<star>"
 ./prepare.sh --otc-token "${otc_token}"
 ```
-This script adds the 'otc_token' ("<star>") and its corresponding sentence-piece ('▁<star>') to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use a GPU to accelerate feature extraction).
+This script adds the 'otc_token' (<star>) and its corresponding sentence-piece (▁<star>) to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use a GPU to accelerate feature extraction).
