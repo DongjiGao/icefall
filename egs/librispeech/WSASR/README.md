@@ -52,8 +52,8 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 feature_dir="data/ssl"
 lang_dir="data/lang"
 lm_dir="data/lm"
-
 otc_token="<star>"
+
 ./prepare.sh \
   --feature-dir "${feature_dir}" \
   --lang-dir "${lang_dir}" \
