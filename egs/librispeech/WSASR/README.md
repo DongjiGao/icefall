@@ -77,7 +77,7 @@ synthetic_train_mainfest="librispeech_cuts_train-clean-100_${sub_er}_${ins_er}_$
   --sub-error-rate "${sub_er}" \
   --ins-error-rate "${ins_er}" \
   --del-error-rate "${del_er}" \
-  --output-cutset "${feature_dir}/${synthetic_train_manifest}"
+  --output-cutset "${manifest_dir}/${synthetic_train_manifest}"
 ```
 This script generates synthetic substitution, insertion, and deletion errors in the transcript with ratios 'sub_er', 'ins_er', and 'del_er', respectively. The original transcript is saved as 'verbatim transcript' in the cutset, along with information on how the transcript is corrupted:
   - '[hello]' indicates the original word is substituted by 'hello'
@@ -119,3 +119,4 @@ python conformer_ctc2/train.py \
   --self-loop-weight-decay "${self_loop_weight_decay}" \
   --show-alignment "${show_alingment}"
 ```
+The bypass arc deals with substitution and insertion errors, while the self-loop arc deals with deletion errors. Using "--show-alignment" would print the best alignment during training, which is very helpful for tuning hyperparameters and debugging.
