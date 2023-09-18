@@ -23,7 +23,7 @@ We propose BTC/OTC to directly train an ASR system leveraging weak supervision, 
 
   </figure>
 </div>
-<figcaption> Examples of errors (substitution, insertion, and deletion) in the transcript. The grey box is the verbatim transcript and the red box is the inaccurate transcript. Inaccurate words are marked in bold.</figcaption> <br>
+<figcaption> Examples of errors (substitution, insertion, and deletion) in the transcript. The grey box is the verbatim transcript and the red box is the inaccurate transcript. Inaccurate words are marked in bold.</figcaption> <br><br>
 
 This is achieved by using a special token $\star$ to model uncertainties (i.e., substitution errors, insertion errors, and deletion errors) 
 within the WFST framework during training.\
