@@ -83,5 +83,7 @@ This script generates synthetic substitution, insertion, and deletion errors in 
   - '-hello-' indicates the word 'hello' is deleted from the transcript
 So if the original transcript is "have a nice day" and the synthetic one is "a very good day", the 'verbatim transcript' would be:
 ```
--have- a [] [good] day
+original:  have  a      nice  day
+synthetic:       a very good  day
+          -have- a  [] [good] day
 ```
