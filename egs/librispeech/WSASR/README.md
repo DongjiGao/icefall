@@ -27,7 +27,7 @@ within the WFST framework during training.
 <figcaption> Examples of errors (substitution, insertion, and deletion) in the transcript. The grey box is the verbatim transcript and the red box is the inaccurate transcript. Inaccurate words are marked in bold.</figcaption> <br><br>
 
 
-we modify $G(\mathbf{y})$ by adding self-loop arcs into each state and bypass arcs into each arc. 
+We modify $G(\mathbf{y})$ by adding self-loop arcs into each state and bypass arcs into each arc. 
   <p align="center">
     <img src="figures/otc_g.png" alt="Image Alt Text" width="50%" />
 
