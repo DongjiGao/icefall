@@ -12,15 +12,15 @@ within the WFST framework during training.
 
 <div style="display: flex;flex; justify-content: space-between">
   <figure style="flex: 2; text-align: center; margin: 5px;">
-    <img src="figures/sub.png" alt="Image 1" width="30%" />
+    <img src="figures/sub.png" alt="Image 1" width="25%" />
 
   </figure>
   <figure style="flex: 2; text-align: center; margin: 5px;">
-    <img src="figures/ins.png" alt="Image 2" width="30%" />
+    <img src="figures/ins.png" alt="Image 2" width="25%" />
 
   </figure>
   <figure style="flex: 2; text-align: center;margin: 5px;">
-    <img src="figures/del.png" alt="Image 3" width="30%" />
+    <img src="figures/del.png" alt="Image 3" width="25%" />
 
   </figure>
 </div>
@@ -52,4 +52,4 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 otc_token="<star>"
 ./prepare.sh --otc-token "${otc_token}"
 ```
-This script adds the 'otc_token' ('\<star\>') and its corresponding sentence-piece (▁<star>) to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use a GPU to accelerate feature extraction).
+This script adds the 'otc_token' ('\<star\>') and its corresponding sentence-piece ('▁\<star\>') to 'words.txt' and 'tokens.txt,' respectively. Additionally, it computes SSL features using the 'wav2vec2-base' model. (You can use a GPU to accelerate feature extraction).
