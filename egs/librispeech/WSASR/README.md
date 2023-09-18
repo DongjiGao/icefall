@@ -48,3 +48,7 @@ The weight of $\star$ is the log average probability of "a" and "b": $\log \frac
 
 ## Description of the recipe
 ### Preparation
+```
+otc_token="<star>"
+./prepare.sh --otc-token "${otc_token}"
+```
