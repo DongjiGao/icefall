@@ -129,3 +129,8 @@ python conformer_ctc2/decode.py \
   --lang-dir "${lang_dir}" \
   --lm-dir "${lm_dir}" 
 ```
+### Results (ctc-greedy-search)
+| Traning Criterion | test-clean | test-other |
+|------------|:-------:|:----:|
+| CTC || |
+| OTC | 11.89 | 25.46 |
