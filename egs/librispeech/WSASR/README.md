@@ -134,3 +134,9 @@ python conformer_ctc2/decode.py \
 |------------|:-------:|:----:|
 | CTC || |
 | OTC | 11.89 | 25.46 |
+
+### Results (1best, blank_bias=-4)
+| Traning Criterion | test-clean | test-other |
+|------------|:-------:|:----:|
+| CTC || |
+| OTC | 6.59 | 15.98 |
