@@ -132,11 +132,11 @@ python conformer_ctc2/decode.py \
 ### Results (ctc-greedy-search)
 | Traning Criterion | test-clean | test-other |
 |------------|:-------:|:----:|
-| CTC || |
+| CTC |100.0|100.0 |
 | OTC | 11.89 | 25.46 |
 
 ### Results (1best, blank_bias=-4)
 | Traning Criterion | test-clean | test-other |
 |------------|:-------:|:----:|
-| CTC || |
+| CTC |98.40|98.68 |
 | OTC | 6.59 | 15.98 |
