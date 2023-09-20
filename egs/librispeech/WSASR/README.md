@@ -153,3 +153,13 @@ Compromise minimum solution:
 | One    | Two | <td colspan=3>triple  | Six |
 | ------ | --- | --- | --- | --- | --- |
 | Span <td colspan=3>triple  <td colspan=2>double|
+
+<table>
+  <tr>
+    <td>One</td>
+    <td>Two</td>
+  </tr>
+  <tr>
+    <td colspan="2">Three</td>
+  </tr>
+</table>
