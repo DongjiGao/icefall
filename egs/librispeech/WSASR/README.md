@@ -160,7 +160,7 @@ Compromise minimum solution:
     vertical-align: middle; /* Vertically center the text */
   }
 </style>
-
+<body>
 <table>
   <tr>
     <td rowspan=2>Training Criterion</td>
@@ -174,3 +174,4 @@ Compromise minimum solution:
     <td>test-other</td>
   </tr>
 </table>
+</body>
