@@ -140,3 +140,9 @@ python conformer_ctc2/decode.py \
 |------------|:-------:|:----:|
 | CTC |98.40|98.68 |
 | OTC | 6.59 | 15.98 |
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+| Cell 7   | Cell spanning two columns |         
