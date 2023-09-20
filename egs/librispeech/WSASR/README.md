@@ -156,10 +156,14 @@ Compromise minimum solution:
 
 <table>
   <tr>
-    <td>One</td>
-    <td>Two</td>
+    <td rowspan=2>Training Criterion</td>
+    <td colspan=2>ssl</td>
+    <td colspan=2>fbank</td>
   </tr>
   <tr>
-    <td colspan="2">Three</td>
+    <td>test-clean</td>
+    <td>test-other</td>
+    <td>test-clean</td>
+    <td>test-other</td>
   </tr>
 </table>
