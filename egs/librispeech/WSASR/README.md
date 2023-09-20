@@ -184,8 +184,8 @@ Compromise minimum solution:
     <td>OTC</td>
     <td>11.89</td>
     <td>25.46</td>
-    <td>99.79</td>
-    <td>99.86</td>
+    <td>20.14</td>
+    <td>44.24</td>
   </tr>
 </table>
 
