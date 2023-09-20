@@ -145,4 +145,11 @@ python conformer_ctc2/decode.py \
 | -------- | -------- | -------- |
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
-| Cell 7   | Cell spanning two columns |         
+| Cell 7   | Cell spanning two columns | 
+
+
+Compromise minimum solution:
+
+| One    | Two | Three | Four    | Five  | Six 
+| -
+| Span <td colspan=3>triple  <td colspan=2>double
