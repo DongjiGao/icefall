@@ -150,6 +150,6 @@ python conformer_ctc2/decode.py \
 
 Compromise minimum solution:
 
-| One    | Two | Three | Four    | Five  | Six 
-| -
-| Span <td colspan=3>triple  <td colspan=2>double
+| One    | Two | Three | Four    | Five  | Six |
+| ------ | --- | --- | --- | --- | --- |
+| Span <td colspan=3>triple  <td colspan=2>double|
