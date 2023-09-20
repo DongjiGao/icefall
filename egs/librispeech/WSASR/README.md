@@ -154,6 +154,13 @@ Compromise minimum solution:
 | ------ | --- | --- | --- | --- | --- |
 | Span <td colspan=3>triple  <td colspan=2>double|
 
+<style>
+  td {
+    text-align: center; /* Horizontally center the text */
+    vertical-align: middle; /* Vertically center the text */
+  }
+</style>
+
 <table>
   <tr>
     <td rowspan=2>Training Criterion</td>
