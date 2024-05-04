@@ -24,7 +24,6 @@ class TransducerTrainingGraphCompiler(object):
           lang_dir:
             This directory is expected to contain the following files:
                 - bpe.model
-                - words.txt
           blank_id:
             blank token id.
           device:
@@ -41,16 +40,35 @@ class TransducerTrainingGraphCompiler(object):
 
     def compile(
         self,
-        texts: List[str],
+        y: k2.RaggedTensor,
+        x_lens: torch.Tensor,
     ) -> k2.Fsa:
-        pass
+        y_fsa_vec = self.convert_y_to_fsa_vec(y, x_lens)
 
-    def convert_transcript_to_fsa(
+    def convert_y_to_fsa_vec(
         self,
-        unit_ids: List[int],
+        y: k2.RaggedTensor,
+        x_lens: torch.Tensor,
+    ):
+        assert y.shape[0] == x_lens.shape[0]
+        N = y.shape[0]
+
+        y_fsa_list = [
+            self.convert_transcript_to_fsa(
+                unit_ids=y[i],
+                num_frames=x_lens[i].item(),
+            )
+            for i in range(N)
+        ]
+        y_fsa_vec = k2.create_fsa_vec(y_fsa_list)
+        return y_fsa_vec
+
+    def convert_y_to_fsa(
+        self,
+        unit_ids: torch.Tensor,
         num_frames: int,
     ) -> k2.Fsa:
-        U = len(unit_ids)
+        U = unit_ids.shape[0]
         T = num_frames
 
         num_states = (U + 1) * T
@@ -85,10 +103,10 @@ class TransducerTrainingGraphCompiler(object):
         U_index[-1] = -1
         # sort by from state (required by k2)
         arcs, T_index, U_index = self.from_state_sort(arcs, T_index, U_index)
-        print(arcs)
 
         transducer_graph = k2.Fsa(arcs, T_index)
         transducer_graph.u_index = U_index
+
         return transducer_graph
 
     def get_forward_arcs_states(
@@ -211,9 +229,3 @@ class TransducerTrainingGraphCompiler(object):
         T_index = T_index[indices]
         U_index = U_index[indices]
         return arcs, T_index, U_index
-
-    def texts_to_ids(
-        self,
-        texts: List[str],
-    ) -> List[List[int]]:
-        return self.sp.encode(texts, out_type=int)
