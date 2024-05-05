@@ -50,11 +50,10 @@ class TransducerTrainingGraphCompiler(object):
         y: k2.RaggedTensor,
         x_lens: torch.Tensor,
     ):
-        assert y.shape[0] == x_lens.shape[0]
-        N = y.shape[0]
+        N = x_lens.shape[0]
 
         y_fsa_list = [
-            self.convert_transcript_to_fsa(
+            self.convert_y_to_fsa(
                 unit_ids=y[i],
                 num_frames=x_lens[i].item(),
             )
@@ -94,13 +93,14 @@ class TransducerTrainingGraphCompiler(object):
             unit_arcs_from_states,
             unit_arcs_to_states,
         )
-        # topological sort
-        arcs = self.top_sort(arcs, U, T)
 
         T_index = torch.div(arcs[:, 0], (U + 1), rounding_mode="floor")
         T_index[-1] = -1
         U_index = arcs[:, 0] % (U + 1)
         U_index[-1] = -1
+
+        # topological sort
+        arcs = self.top_sort(arcs, U, T)
         # sort by from state (required by k2)
         arcs, T_index, U_index = self.from_state_sort(arcs, T_index, U_index)
 
