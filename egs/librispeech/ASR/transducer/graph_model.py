@@ -157,9 +157,9 @@ def make_lattice(
             + training_graphs.labels.to(torch.int64)
         )
         score_indices[training_graphs.labels == -1] = 0
-        scores = log_probs.flatten().index_select(-1, score_indices)
-        scores[training_graphs.labels == -1] = 0
+    scores = log_probs.flatten().index_select(-1, score_indices)
+    scores[training_graphs.labels == -1] = 0
 
-        training_graphs.scores = scores
+    training_graphs.scores = scores
 
-        return training_graphs
+    return training_graphs
